@@ -30,7 +30,7 @@
         }
     }
 
-    applyTheme(storedTheme() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    applyTheme(storedTheme() || 'light');
 
     if (themeToggle) {
         themeToggle.addEventListener('click', function () {
@@ -42,19 +42,6 @@
                 /* stockage indisponible : le thème reste actif pour la page */
             }
         });
-    }
-
-    if (window.matchMedia) {
-        var media = window.matchMedia('(prefers-color-scheme: dark)');
-        var onSystemThemeChange = function (event) {
-            if (storedTheme() === null) {
-                applyTheme(event.matches ? 'dark' : 'light');
-            }
-        };
-
-        if (typeof media.addEventListener === 'function') {
-            media.addEventListener('change', onSystemThemeChange);
-        }
     }
 
     /* ---------------------------------------------------------------

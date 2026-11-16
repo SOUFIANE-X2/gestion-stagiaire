@@ -1,6 +1,6 @@
 # INARAIN — Gestion des stagiaires & absences
 
-Application web de gestion de centre de formation : stagiaires, filières, groupes, absences, justifications, notes et rapports imprimables. Projet PHP 8 + MySQL sans framework, avec une interface d'administration en français et un thème clair/sombre.
+Application web de gestion de centre de formation : stagiaires, filières, groupes, absences, justifications, notes et rapports imprimables. Projet PHP 8 + MySQL sans framework, avec une interface d'administration en français, un thème clair par défaut et un thème sombre soigné.
 
 > Projet portfolio réalisé autour du domaine métier **INARAIN** (suivi des stagiaires et des absences).
 
@@ -9,6 +9,7 @@ Application web de gestion de centre de formation : stagiaires, filières, group
 ## Sommaire
 
 - [Aperçu](#aperçu)
+- [Captures](#captures)
 - [Fonctionnalités](#fonctionnalités)
 - [Stack technique](#stack-technique)
 - [Architecture](#architecture)
@@ -36,7 +37,19 @@ INARAIN centralise le suivi administratif d'un centre de formation :
 - des **rapports imprimables** par filière et des **exports CSV** ;
 - un **espace compte** (profil, mot de passe, activité).
 
-L'interface est entièrement en français, responsive, avec thème clair/sombre mémorisé dans le navigateur.
+L'interface est entièrement en français, responsive, avec un thème clair par défaut et un thème sombre mémorisé dans le navigateur.
+
+---
+
+## Captures
+
+| Tableau de bord — thème clair | Tableau de bord — thème sombre |
+| --- | --- |
+| ![Tableau de bord en thème clair](docs/screenshots/dashboard-light.png) | ![Tableau de bord en thème sombre](docs/screenshots/dashboard-dark.png) |
+
+![Liste des stagiaires](docs/screenshots/stagiaires-light.png)
+
+![Fiche stagiaire](docs/screenshots/stagiaire-detail-light.png)
 
 ---
 
@@ -149,7 +162,7 @@ Le point d'entrée public est `public/index.php`. La configuration locale conten
 ### 1. Récupérer le projet
 
 ```bash
-git clone https://github.com/<votre-compte>/inarain-app.git
+git clone https://github.com/SOUFIANE-X2/gestion-stagiaire.git
 ```
 
 Ou placez le dossier dans le répertoire web de votre serveur, par exemple :
