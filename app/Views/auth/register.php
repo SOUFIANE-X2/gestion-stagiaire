@@ -7,7 +7,7 @@ $errors = $errors ?? [];
 <div class="auth-card">
     <p class="eyebrow">Nouveau compte</p>
     <h2>Créer un accès</h2>
-    <p class="muted">Le compte créé pourra gérer les stagiaires, les absences et les rapports.</p>
+    <p class="muted">Le compte créé aura le rôle Gestionnaire : stagiaires, absences et rapports.</p>
 
     <form action="<?= e(url('register')) ?>" method="post" class="form-stack">
         <?= Csrf::field() ?>
@@ -28,13 +28,13 @@ $errors = $errors ?? [];
 
         <div class="field">
             <label for="matricule">Matricule</label>
-            <input id="matricule" name="matricule" type="text" value="<?= old($old, 'matricule') ?>" placeholder="ADM-002" autocomplete="username" required>
+            <input id="matricule" name="matricule" type="text" value="<?= old($old, 'matricule') ?>" autocomplete="username" required>
             <?php if (isset($errors['matricule'])): ?><p class="field-error"><?= e($errors['matricule']) ?></p><?php endif; ?>
         </div>
 
         <div class="field">
             <label for="email">Adresse e-mail</label>
-            <input id="email" name="email" type="email" value="<?= old($old, 'email') ?>" placeholder="vous@inarain.ma" autocomplete="email" required>
+            <input id="email" name="email" type="email" value="<?= old($old, 'email') ?>" autocomplete="email" required>
             <?php if (isset($errors['email'])): ?><p class="field-error"><?= e($errors['email']) ?></p><?php endif; ?>
         </div>
 

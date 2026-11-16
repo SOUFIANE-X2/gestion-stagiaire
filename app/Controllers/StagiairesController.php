@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\Flash;
 use App\Core\View;
 use App\Models\Absence;
@@ -145,6 +146,8 @@ final class StagiairesController
 
     public function destroy(string $id): void
     {
+        Auth::requireAdmin();
+
         $stagiaire = Stagiaire::find((int) $id);
 
         if (!$stagiaire) {

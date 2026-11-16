@@ -20,7 +20,7 @@ use App\Core\Csrf;
             <label for="matricule">Matricule</label>
             <div class="input-icon">
                 <?= icon('user') ?>
-                <input id="matricule" name="matricule" type="text" value="<?= e((string) ($matricule ?? '')) ?>" placeholder="ADM-001" autocomplete="username" required autofocus>
+                <input id="matricule" name="matricule" type="text" value="<?= e((string) ($matricule ?? '')) ?>" autocomplete="username" required autofocus>
             </div>
         </div>
 
@@ -28,7 +28,7 @@ use App\Core\Csrf;
             <label for="password">Mot de passe</label>
             <div class="input-icon">
                 <?= icon('shield') ?>
-                <input id="password" name="password" type="password" placeholder="Votre mot de passe" autocomplete="current-password" required data-password-input>
+                <input id="password" name="password" type="password" autocomplete="current-password" required data-password-input>
                 <button class="input-action" type="button" data-toggle-password aria-label="Afficher le mot de passe" aria-controls="password">
                     <?= icon('eye') ?>
                 </button>
@@ -38,6 +38,6 @@ use App\Core\Csrf;
         <button class="btn btn-primary btn-block btn-lg" type="submit">Se connecter</button>
     </form>
 
-    <p class="auth-switch">Pas encore de compte ? <a href="<?= e(url('register')) ?>">Créer un accès administrateur</a></p>
+    <p class="auth-switch">Pas encore de compte ? <a href="<?= e(url('register')) ?>">Créer un compte</a></p>
     <p class="auth-hint"><?= icon('info') ?> Les identifiants de démonstration sont fournis dans le fichier README du projet.</p>
 </div>

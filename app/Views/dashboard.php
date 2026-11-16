@@ -6,6 +6,7 @@ $maxFiliere = 1;
 foreach ($byFiliere as $row) {
     $maxFiliere = max($maxFiliere, (int) $row['total']);
 }
+$isAdmin = ($admin['role'] ?? '') === 'admin';
 ?>
 <section class="page-head">
     <div>
@@ -103,14 +104,18 @@ foreach ($byFiliere as $row) {
                 <h3>Répartition par filière</h3>
                 <p class="muted">Effectifs et moyenne de chaque filière.</p>
             </div>
+            <?php if ($isAdmin): ?>
             <a class="text-link" href="<?= e(url('filieres')) ?>">Gérer <?= icon('chevron-right') ?></a>
+            <?php endif; ?>
         </div>
 
         <?php if ($byFiliere === []): ?>
             <div class="empty-state">
                 <?= icon('layers') ?>
                 <p>Aucune filière enregistrée.</p>
+                <?php if ($isAdmin): ?>
                 <a class="btn btn-ghost btn-sm" href="<?= e(url('filieres')) ?>">Créer une filière</a>
+                <?php endif; ?>
             </div>
         <?php else: ?>
             <ul class="bar-list">

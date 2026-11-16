@@ -91,9 +91,9 @@ foreach ($counts as $table => $count) {
     echo sprintf('  %-16s %d ligne(s)', $table, $count) . PHP_EOL;
 }
 
-echo PHP_EOL . "Compte de démonstration :" . PHP_EOL;
-echo "  Matricule : ADM-001" . PHP_EOL;
-echo "  Mot de passe : inarain2026" . PHP_EOL;
+echo PHP_EOL . "Comptes de démonstration :" . PHP_EOL;
+echo "  ADM-001 / inarain2026  (administrateur)" . PHP_EOL;
+echo "  GES-001 / inarain2026  (gestionnaire)" . PHP_EOL;
 echo PHP_EOL . "Démarrage local : php -S 127.0.0.1:8093 -t public public/index.php" . PHP_EOL;
 
 /**

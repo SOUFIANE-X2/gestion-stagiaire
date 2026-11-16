@@ -4,12 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\Flash;
 use App\Core\View;
 use App\Models\Filiere;
 
 final class FilieresController
 {
+    public function __construct()
+    {
+        Auth::requireAdmin();
+    }
+
     public function index(): void
     {
         View::render('filieres/index', [

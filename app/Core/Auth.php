@@ -24,6 +24,24 @@ final class Auth
         return $_SESSION['admin'] ?? null;
     }
 
+    public static function role(): string
+    {
+        return (string) ($_SESSION['admin']['role'] ?? 'manager');
+    }
+
+    public static function isAdmin(): bool
+    {
+        return self::role() === 'admin';
+    }
+
+    public static function requireAdmin(): void
+    {
+        if (!self::isAdmin()) {
+            Flash::set('error', 'Cette action est réservée aux administrateurs.');
+            redirect('');
+        }
+    }
+
     public static function attempt(string $matricule, string $password): bool
     {
         $statement = Database::connection()->prepare(

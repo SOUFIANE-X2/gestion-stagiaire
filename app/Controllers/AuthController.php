@@ -121,7 +121,7 @@ final class AuthController
         Auth::attempt($data['matricule'], $password);
         Admin::touchLogin($adminId);
 
-        Flash::set('success', 'Votre compte administrateur a été créé.');
+        Flash::set('success', 'Votre compte gestionnaire a été créé.');
         redirect('');
     }
 

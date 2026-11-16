@@ -4,6 +4,7 @@ $pageTitle = $pageTitle ?? 'Tableau de bord';
 $admin = $admin ?? [];
 $flashes = $flashes ?? [];
 $appName = (string) config('app.name', 'INARAIN');
+$isAdmin = ($admin['role'] ?? '') === 'admin';
 ?>
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
@@ -13,6 +14,7 @@ $appName = (string) config('app.name', 'INARAIN');
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#0f172a">
     <title><?= e($pageTitle) ?> · <?= e($appName) ?></title>
+    <link rel="icon" href="<?= e(asset('favicon.svg')) ?>" type="image/svg+xml">
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
     <script>
         (function () {
@@ -59,9 +61,11 @@ $appName = (string) config('app.name', 'INARAIN');
             <a class="nav-link<?= is_active('/stagiaires') ? ' is-active' : '' ?>" href="<?= e(url('stagiaires')) ?>"<?= is_active('/stagiaires') ? ' aria-current="page"' : '' ?>>
                 <?= icon('users') ?><span>Stagiaires</span>
             </a>
+            <?php if ($isAdmin): ?>
             <a class="nav-link<?= is_active('/filieres') ? ' is-active' : '' ?>" href="<?= e(url('filieres')) ?>"<?= is_active('/filieres') ? ' aria-current="page"' : '' ?>>
                 <?= icon('layers') ?><span>Filières &amp; groupes</span>
             </a>
+            <?php endif; ?>
         </nav>
 
         <div class="sidebar-footer">

@@ -1,5 +1,7 @@
 # INARAIN — Gestion des stagiaires & absences
 
+[![PHP lint](https://github.com/SOUFIANE-X2/gestion-stagiaire/actions/workflows/php-lint.yml/badge.svg)](https://github.com/SOUFIANE-X2/gestion-stagiaire/actions/workflows/php-lint.yml)
+
 Application web de gestion de centre de formation : stagiaires, filières, groupes, absences, justifications, notes et rapports imprimables. Projet PHP 8 + MySQL sans framework, avec une interface d'administration en français, un thème clair par défaut et un thème sombre soigné.
 
 > Projet portfolio réalisé autour du domaine métier **INARAIN** (suivi des stagiaires et des absences).
@@ -16,7 +18,8 @@ Application web de gestion de centre de formation : stagiaires, filières, group
 - [Prérequis](#prérequis)
 - [Installation locale (WAMP / XAMPP)](#installation-locale-wamp--xampp)
 - [Lancer l'application](#lancer-lapplication)
-- [Compte de démonstration](#compte-de-démonstration)
+- [Comptes de démonstration](#comptes-de-démonstration)
+- [Rôles et permissions](#rôles-et-permissions)
 - [Règles métier](#règles-métier)
 - [Sécurité](#sécurité)
 - [Rapports et exports](#rapports-et-exports)
@@ -58,7 +61,8 @@ L'interface est entièrement en français, responsive, avec un thème clair par 
 ### Authentification
 
 - Connexion par matricule + mot de passe.
-- Création de compte administrateur (désactivable via `app.allow_registration`).
+- Deux rôles : **administrateur** (accès complet) et **gestionnaire** (gestion quotidienne).
+- Création de compte gestionnaire (désactivable via `app.allow_registration`).
 - Mots de passe hachés avec `password_hash()` / vérifiés avec `password_verify()`.
 - Limitation des tentatives de connexion : 5 échecs par session sur 10 minutes.
 - Régénération de l'identifiant de session après connexion et changement de mot de passe.
@@ -98,7 +102,7 @@ L'interface est entièrement en français, responsive, avec un thème clair par 
 ### Interface
 
 - Design system CSS maison (aucun framework front).
-- Thème clair/sombre avec préférence système et mémorisation locale.
+- Thème clair par défaut, thème sombre disponible, préférence mémorisée localement.
 - Navigation latérale rétractable sur mobile.
 - Modales natives `<dialog>`, confirmations de suppression, messages flash.
 - Accessibilité : lien d'évitement, labels, `aria-*`, focus visible, sprite SVG partagé.
@@ -247,16 +251,31 @@ L'extension Apache `mod_rewrite` doit être activée pour que `.htaccess` foncti
 
 ---
 
-## Compte de démonstration
+## Comptes de démonstration
 
-| Champ | Valeur |
-| --- | --- |
-| Matricule | `ADM-001` |
-| Mot de passe | `inarain2026` |
+| Rôle | Matricule | Mot de passe |
+| --- | --- | --- |
+| Administrateur | `ADM-001` | `inarain2026` |
+| Gestionnaire | `GES-001` | `inarain2026` |
 
 Le jeu de données contient 3 filières, 5 groupes, 20 stagiaires et 44 absences.
 
 > Ces identifiants sont publics et destinés uniquement à la démonstration locale.
+
+---
+
+## Rôles et permissions
+
+| Action | Administrateur | Gestionnaire |
+| --- | :---: | :---: |
+| Tableau de bord, rapports, exports | Oui | Oui |
+| Consulter / créer / modifier un stagiaire | Oui | Oui |
+| Supprimer un stagiaire | Oui | Non |
+| Gérer les absences et justifications | Oui | Oui |
+| Gérer les filières et groupes | Oui | Non |
+| Modifier son profil et son mot de passe | Oui | Oui |
+
+Le rôle est stocké dans la colonne `role` de la table `administrators`. Les pages réservées aux administrateurs sont protégées côté contrôleur (`Auth::requireAdmin()`), pas seulement masquées dans l'interface. Un compte créé depuis la page d'inscription reçoit automatiquement le rôle **gestionnaire**.
 
 ---
 

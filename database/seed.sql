@@ -1,11 +1,13 @@
 -- INARAIN — données de démonstration
--- Mot de passe du compte admin : inarain2026
--- Matricule : ADM-001
+-- Comptes :
+--   ADM-001 / inarain2026  (administrateur)
+--   GES-001 / inarain2026  (gestionnaire)
 
 SET NAMES utf8mb4;
 
 INSERT INTO administrators (id, matricule, password_hash, first_name, last_name, email, role, last_login_at) VALUES
-(1, 'ADM-001', '$2y$10$HiuV.bwnOUL06oqLEEQTlOklUT/nDN0O6GFVbOVXfrau0rjGNgRka', 'Soufiane', 'El Amrani', 'admin@inarain.ma', 'admin', NULL);
+(1, 'ADM-001', '$2y$10$HiuV.bwnOUL06oqLEEQTlOklUT/nDN0O6GFVbOVXfrau0rjGNgRka', 'Soufiane', 'El Amrani', 'admin@inarain.ma', 'admin', NULL),
+(2, 'GES-001', '$2y$10$HiuV.bwnOUL06oqLEEQTlOklUT/nDN0O6GFVbOVXfrau0rjGNgRka', 'Nadia', 'Bennani', 'gestion@inarain.ma', 'manager', NULL);
 
 INSERT INTO filieres (id, code, label) VALUES
 (1, 'DD', 'Développement Digital'),

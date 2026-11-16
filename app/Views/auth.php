@@ -12,6 +12,7 @@ $flashes = $flashes ?? [];
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#0f172a">
     <title><?= e($pageTitle) ?> · <?= e($appName) ?></title>
+    <link rel="icon" href="<?= e(asset('favicon.svg')) ?>" type="image/svg+xml">
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
     <script>
         (function () {

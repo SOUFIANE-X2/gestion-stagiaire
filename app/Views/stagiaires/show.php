@@ -4,6 +4,7 @@ $statusBadges = ['active' => 'success', 'graduated' => 'info', 'archived' => 'mu
 $note = (float) $stagiaire['note'];
 $noteWidth = max(0, min(100, ($note / 20) * 100));
 $justified = (int) $stagiaire['absence_total'] - (int) $stagiaire['absence_open'];
+$isAdmin = ($admin['role'] ?? '') === 'admin';
 ?>
 <section class="page-head">
     <div>
@@ -15,13 +16,14 @@ $justified = (int) $stagiaire['absence_total'] - (int) $stagiaire['absence_open'
     <div class="page-actions">
         <a class="btn btn-ghost" href="<?= e(url('absences') . '?search=' . urlencode($stagiaire['code'])) ?>"><?= icon('calendar-x') ?> Gérer les absences</a>
         <a class="btn btn-primary" href="<?= e(url('stagiaires/' . $stagiaire['id'] . '/edit')) ?>"><?= icon('edit') ?> Modifier</a>
+        <?php if ($isAdmin): ?>
         <form action="<?= e(url('stagiaires/' . $stagiaire['id'] . '/delete')) ?>" method="post" data-confirm="Supprimer <?= e($stagiaire['first_name'] . ' ' . $stagiaire['last_name']) ?> ? Son historique d’absences sera également supprimé.">
             <?= csrf_field() ?>
             <button class="btn btn-danger-ghost" type="submit"><?= icon('trash') ?> Supprimer</button>
         </form>
+        <?php endif; ?>
     </div>
 </section>
-
 <div class="profile-grid">
     <section class="card profile-card">
         <div class="profile-hero">
