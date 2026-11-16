@@ -73,7 +73,7 @@ L'interface est entièrement en français, responsive, avec un thème clair par 
 - Création, consultation, modification et suppression.
 - Code stagiaire généré automatiquement (`STG-0001`, `STG-0002`, …).
 - Recherche par nom, prénom ou code ; filtres par filière, groupe, statut et note.
-- Pagination (12 lignes par page).
+- Pagination (10 lignes par page).
 - Statuts : `active`, `graduated`, `archived`.
 - Note sur 20 avec code couleur (acquis / à surveiller / insuffisant).
 - Suppression en cascade de l'historique d'absences.
