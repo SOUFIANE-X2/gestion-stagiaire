@@ -1,0 +1,26 @@
+# Local configuration (contains database credentials)
+config/config.local.php
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+*.swp
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Tooling
+node_modules/
+vendor/
+dist/
+coverage/
+
+# Local environment
+.env
+.env.*
